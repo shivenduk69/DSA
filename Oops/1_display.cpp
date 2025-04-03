@@ -34,7 +34,7 @@ int main(){
     int x;// x is percentage which you want to give as discount
     x = 20;
     cout << "Amount after discount is " << c1.discountedPrice(x) << endl;
-
+    cout << "shiv";
     c1.update_discount(x);
     c1.display();
     return 0;
