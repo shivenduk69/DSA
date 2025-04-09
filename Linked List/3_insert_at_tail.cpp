@@ -1,33 +1,53 @@
-//insert 60 at the tail of the LL such that output becomes 10->20->30->40->50->60
 #include<iostream>
 using namespace std;
-class listnode{
+class Listnode{
     public:
     int val;
-    listnode* next;
-    listnode(int val){
-        this->val = val;
-        this->next = NULL;
+    Listnode* next;
+
+    Listnode(int val){
+        this-> val = val;
+        this-> next = NULL;
     }
-}
-
-
-void insertAtTail(listnode*& head, int val){
-    listnode* n = new listnode(val);
-    
+};
+void insertAtHead(Listnode*& head, int val){
+    Listnode* n = new Listnode(val);
     n->next = head;
     head = n;
 }
-void printList(listnode* head){
-    cout << head->val << " ";
-    head = head->next;
+Listnode* getTail(Listnode* head){
+    
+    while(head->next != NULL){
+        head = head->next;
+    }
+    return head;
+}
+void insertAtTail(Listnode*& head, int val){
+    if(head == NULL){
+        insertAtHead(head, val);
+    }
+    Listnode* n = new Listnode(60);
+    Listnode* tail = getTail(head);
+    tail->next = n;
+}
+void printLinkedList(Listnode*& head){
+    
+    while(head != NULL){
+        cout << head->val << " ";
+        head = head->next;  
+    }
+    
 }
 int main(){
-    listnode* head = NULL;
-    insertAtTail(head, 10);
-    insertAtTail(head, 20);
-    insertAtTail(head, 30);
-    insertAtTail(head, 40);
-    insertAtTail(head, 50);
+    Listnode* head = NULL;
+
+    insertAtHead(head, 50);
+    insertAtHead(head, 40);
+    insertAtHead(head, 30);
+    insertAtHead(head, 20);
+
+    insertAtTail(head, 60);
+    printLinkedList(head);
+
     return 0;
 }
