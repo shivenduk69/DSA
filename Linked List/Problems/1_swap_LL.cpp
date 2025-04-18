@@ -1,5 +1,3 @@
-//in this program we will find the kth node from the end of the LL
-
 #include<iostream>
 using namespace std;
 class listnode{
@@ -25,9 +23,32 @@ void printLinkedList(listnode* head){
     }
     cout << endl;
 }
-
-void kthFromEnd(listnode* head, int k){
-    
+int lengthOfLL(listnode* head){
+    int len = 0;
+    while(head != NULL){
+        len++;
+        head = head->next;
+    }
+    return len;
+}
+void swapLinkedList(listnode*& head){
+    int n = lengthOfLL(head);
+    listnode* prev = head;
+    listnode* curr = head->next;
+    listnode* temp1 = NULL;
+    listnode* temp2 = NULL;
+    head = head->next;
+    int i = 1;
+    while(i<=n/2){
+        temp1 = prev;
+        temp2 = curr->next;
+        curr->next = temp1;
+        if(temp2->next != NULL){
+            prev->next = temp2->next;
+            prev = temp2;
+            curr = prev->next;
+        }
+    }
 }
 int main(){
     listnode* head = NULL;
@@ -37,7 +58,7 @@ int main(){
     insertAtHead(head, 20);
     insertAtHead(head, 10);
 
-    cout << kthFromEnd(head, 2) << endl;
+    swapLinkedList(head);
     printLinkedList(head);
     return 0;
 }

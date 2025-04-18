@@ -22,6 +22,7 @@ void insertAtHead(listnode*& head, int val){
     n->next = head;
     head = n;
 }
+
 void printLinkedList(listnode* head){
     while(head != NULL){
         cout << head->val << " ";
