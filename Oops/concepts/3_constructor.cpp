@@ -6,7 +6,6 @@ public:
     int build_no;
     string name;
 
-
     //Constructor
     Car(){//default constructor
         cout << "Inside car constructor" << endl;

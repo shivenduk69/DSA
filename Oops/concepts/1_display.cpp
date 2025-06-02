@@ -5,8 +5,7 @@ class Car{
     int price;
     int model_no;
     char name[20];
-
-
+    
     float discountedPrice(int x){
         return price*(1.0-0.01*x);
     }
