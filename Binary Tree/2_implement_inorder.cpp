@@ -26,7 +26,6 @@ node* binaryTree(){
 }
 void print(node* root){
     if(root == NULL) return;
-
     print(root->left);
     cout << root->data << " ";
     print(root->right);

@@ -1,9 +1,13 @@
 {
     "files.associations": {
+        "*.js": "javascriptreact",
         "iostream": "cpp",
         "array": "cpp",
         "ostream": "cpp",
         "istream": "cpp",
-        "regex": "cpp"
-    }
+        "regex": "cpp",
+        "typeindex": "cpp",
+        "typeinfo": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "enabled"
 }
