@@ -1,30 +1,26 @@
-//in this problem we are going to solve knapsack problem by dp
+//in this problem we are going to solve knapsack problem by dp     
 
 #include<iostream>
 #include<vector>
 using namespace std;
-long long knapsack(vector<int> &weight, vector<int> &value, int w, int i, long long val=0){
-    long long ans = 0;
+long long knapsack(vector<int> &weight, vector<int> &value, int amount, int idx, vector<vector<long long>> &dp){     
     int n = weight.size();
-    if(w>0){
-        ans = max(ans, val);
-    }
-    if(w==0) return val;
-    if(i==n) return 0;
+    if(amount == 0) return 0;
+    if(amount<0) return -1e9;//invalid path
+    if(idx==n) return 0;//base case
+    if(dp[amount][idx]!=-1) return dp[amount][idx];
     
-    
-    ans = max(ans, max(knapsack(weight, value, w-weight[i], i+1, val+value[i]),
-    knapsack(weight, value, w, i+1, val)));
-    return ans;
-}
+    return dp[amount][idx]=max(value[idx]+knapsack(weight, value, amount-weight[idx], idx+1, dp), knapsack(weight, value, amount, idx+1, dp));     
+}     
 int main(){
     int n, w;
-    cin >> n >> w;
-    vector<int> weight(n);
-    vector<int> value(n);
-    for(int i = 0; i<n; i++){
+    cin >> n >> w;     
+    vector<int> weight(n);     
+    vector<int> value(n);     
+    vector<vector<long long>> dp(w+1, vector<long long> (n, -1));
+    for(int i = 0; i<n; i++){     
         cin >> weight[i] >> value[i];
     }
-    cout << knapsack(weight, value, w, 0) << endl;
+    cout << knapsack(weight, value, w, 0, dp) << endl;     
     return 0;
 }
