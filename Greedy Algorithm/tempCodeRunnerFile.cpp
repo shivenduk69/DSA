@@ -1,0 +1,1 @@
+if(pq.empty() and l>0 and p==0){
